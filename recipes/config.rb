@@ -62,7 +62,7 @@ template hostfile_path do
   })
 end
 
-node.default['tinc']['hostfile'] = ::File.read(hostfile_path)
+node.default['tinc']['hostfile'] = lambda {::File.read(hostfile_path) }
 
 hosts_to_connect = search(:node, "NOT fqdn:#{node['fqdn']} AND run_list:recipe\\[tinc\\] AND chef_environment:#{node.chef_environment}")
 
