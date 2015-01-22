@@ -1,0 +1,7 @@
+Name = <%= @fqdn %>
+AddressFamily = ipv4
+Device = /dev/net/tun0
+Mode = switch
+<% @hosts.each do |host| %>
+ConnectTo = <%= host['fqdn'] %>
+<% end %>

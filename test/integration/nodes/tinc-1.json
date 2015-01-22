@@ -1,0 +1,12 @@
+{
+  "id": "tinc-1",
+  "run_list": ["recipe[tinc]"],
+  "automatic" : {
+    "fqdn" : "tinc-1.test-kitchen"
+  },
+  "default" : {
+    "tinc" : {
+      "network_name" : "test"
+    }
+  }
+}
