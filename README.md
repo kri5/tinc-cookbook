@@ -1,4 +1,4 @@
-# tinc-cookbook-cookbook
+# tinc-cookbook
 
 TODO: Enter the cookbook description here.
 
