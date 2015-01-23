@@ -22,7 +22,7 @@ directory network_config_dir_path do
   mode '0755'
 end
 
-public_key_path = "#{network_config_dir_path}/rsa_key.priv"
+public_key_path = "#{network_config_dir_path}/rsa_key.pub"
 private_key_path = "#{network_config_dir_path}/rsa_key.priv"
 
 execute "Keys generation for tinc" do
