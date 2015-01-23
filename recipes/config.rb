@@ -45,7 +45,7 @@ end
 file private_key_path do
   owner 'root'
   group 'root'
-  mode '0444'
+  mode '0400'
 end
 
 hostname = node['fqdn'].gsub(/[.-_]+/, '')
