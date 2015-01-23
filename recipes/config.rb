@@ -58,7 +58,8 @@ template hostfile_path do
   mode '0444'
   variables ({
     :public_key => lazy { ::File.read(public_key_path) },
-    :port => node['tinc']['listen_port']
+    :port => node['tinc']['listen_port'],
+    :ip => node['ipaddress']
   })
 end
 
