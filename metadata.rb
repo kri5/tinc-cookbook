@@ -4,7 +4,7 @@ maintainer_email 'christophe.courtaut@gmail.com'
 license          'All rights reserved'
 description      'Installs/Configures tinc-cookbook'
 long_description 'Installs/Configures tinc-cookbook'
-version          '0.1.1'
+version          '0.1.2'
 
 grouping 'tinc',
  :title => 'Tinc Options',
