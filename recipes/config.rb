@@ -63,7 +63,12 @@ template hostfile_path do
   })
 end
 
-node.default['tinc']['hostfile'] = lambda {::File.read(hostfile_path) }
+ruby_block "set hostfile" do
+  block do
+    node.default['tinc']['hostfile'] = ::File.read(hostfile_path)
+    node.save
+  end
+end
 
 hosts_to_connect = lambda { search(:node, "NOT name:#{node['name']} AND tinc_network_name:#{node['tinc']['network_name']} AND chef_environment:#{node.chef_environment}") }
 
