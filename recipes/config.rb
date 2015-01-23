@@ -70,7 +70,8 @@ ruby_block "set hostfile" do
   end
 end
 
-hosts_to_connect = lambda { search(:node, "NOT name:#{node['name']} AND tinc_network_name:#{node['tinc']['network_name']} AND chef_environment:#{node.chef_environment}") }
+hosts_to_connect = search(:node, "tinc_network_name:#{node['tinc']['network_name']} AND chef_environment:#{node.chef_environment}")
+hosts_to_connect.delete_if { |host| node['fqdn'] == host['fqdn']}
 
 template "#{network_config_dir_path}/tinc.conf" do
   source 'tinc.config.erb'
@@ -78,8 +79,8 @@ template "#{network_config_dir_path}/tinc.conf" do
   group 'root'
   mode '0444'
   variables ({
-    :hosts => hosts_to_connect.call,
-    :fqdn => node['fqdn']
+    :hosts => hosts_to_connect,
+    :fqdn => hostname
   })
 end
 
