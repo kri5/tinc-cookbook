@@ -64,7 +64,7 @@ end
 
 node.default['tinc']['hostfile'] = lambda {::File.read(hostfile_path) }
 
-hosts_to_connect = lambda { search(:node, "NOT fqdn:#{node['fqdn']} AND tinc_network_name:#{node['tinc']['network_name']} AND chef_environment:#{node.chef_environment}") }
+hosts_to_connect = lambda { search(:node, "NOT name:#{node['name']} AND tinc_network_name:#{node['tinc']['network_name']} AND chef_environment:#{node.chef_environment}") }
 
 template "#{network_config_dir_path}/tinc.conf" do
   source 'tinc.config.erb'
