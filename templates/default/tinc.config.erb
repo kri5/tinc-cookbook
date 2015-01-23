@@ -3,5 +3,5 @@ AddressFamily = ipv4
 Device = /dev/net/tun
 Mode = switch
 <% @hosts.each do |host| %>
-ConnectTo = <%= host['fqdn'] %>
+ConnectTo = <%= host['fqdn'].gsub(/[.\-_]+/, '') %>
 <% end %>

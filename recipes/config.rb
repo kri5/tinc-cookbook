@@ -48,7 +48,7 @@ file private_key_path do
   mode '0400'
 end
 
-hostname = node['fqdn'].gsub(/[.-_]+/, '')
+hostname = node['fqdn'].gsub(/[.\-_]+/, '')
 hostfile_path = "#{network_config_dir_path}/hosts/#{hostname}"
 
 template hostfile_path do
@@ -78,10 +78,10 @@ template "#{network_config_dir_path}/tinc.conf" do
   })
 end
 
-hosts_to_connect.call.each do |host|
-  hostname = host['fqdn'].gsub(/[.-_]+/, '')
-  hostfile_path = "#{network_config_dir_path}/hosts/#{hostname}"
-  file hostfile_path do
+hosts_to_connect.each do |host|
+  other_hostname = host['fqdn'].gsub(/[.\-_]+/, '')
+  other_hostfile_path = "#{network_config_dir_path}/hosts/#{other_hostname}"
+  file other_hostfile_path do
     owner 'root'
     group 'root'
     mode '0444'
