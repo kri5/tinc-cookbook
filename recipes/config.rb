@@ -72,12 +72,12 @@ template "#{network_config_dir_path}/tinc.conf" do
   group 'root'
   mode '0444'
   variables ({
-    :hosts => hosts_to_connect,
+    :hosts => hosts_to_connect.call,
     :fqdn => node['fqdn']
   })
 end
 
-hosts_to_connect.each do |host|
+hosts_to_connect.call.each do |host|
   hostname = host['fqdn'].gsub(/[.-_]+/, '')
   hostfile_path = "#{network_config_dir_path}/hosts/#{hostname}"
   file hostfile_path do
