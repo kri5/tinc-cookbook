@@ -13,6 +13,12 @@ suites:
     run_list: [ 'tinc' ]
     attributes:
       tinc:
-        network_name: "test"
-        private_ip: "10.0.0.1"
-        netmask: "255.255.0.0"
+        networks:
+          - network_name: "test"
+            private_ip: "10.0.0.1"
+            netmask: "255.255.0.0"
+            listen_port: 665
+          - network_name: "test2"
+            private_ip: "10.254.0.1"
+            netmask: "255.255.0.0"
+            listen_port: 666
